@@ -1,0 +1,15 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: doge-cron
+spec:
+  schedule: "*/1 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: doge-cron
+            image: localhost:5000/doge-job
+            imagePullPolicy: IfNotPresent
+          restartPolicy: Never
